@@ -27,7 +27,9 @@ public class ComplaintStatus {
         this.updatedOn = LocalDateTime.now();
     }
 
-    public Long getId() { return id; }
+    public Long getId() { 
+        return id;
+         }
     public void setId(Long id) { this.id = id; }
     public Complaint getComplaint() { return complaint; }
     public void setComplaint(Complaint complaint) { this.complaint = complaint; }
