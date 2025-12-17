@@ -22,7 +22,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Constructors, Getters, and Setters
     public User() {}
 
     public Long getId() { return id; }
