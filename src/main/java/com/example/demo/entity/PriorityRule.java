@@ -39,4 +39,14 @@ public class PriorityRule {
     public void setDescription(String description) { 
         this.description = description; 
         }
+
+  public PriorityRule(Long id,String category,Integer baseScore,String description){
+    this.id=id;
+    this.category=category;
+    this.baseScore=baseScore;
+    this.description=description;
+  }
+  public PriorityRule(){
+    
+  }
 }
