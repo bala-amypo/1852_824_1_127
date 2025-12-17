@@ -69,4 +69,10 @@ public class Complaint {
     public void setUser(User user) {
          this.user = user; 
          }
+    public Complaint(Long id,String title,String description,String category,Integer priorityScore){
+
+    }
+    public complaint(){
+        
+    }
 }

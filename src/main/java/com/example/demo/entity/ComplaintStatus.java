@@ -48,5 +48,11 @@ public class ComplaintStatus {
     public LocalDateTime getUpdatedOn() {
          return updatedOn;
           }
-   public ComplaintStatus(Long id,)
+   public ComplaintStatus(Long id,String status){
+        this.id=id;
+        this.status=status
+   }
+   public ComplaintStatus(){
+
+   }
 }
