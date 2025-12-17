@@ -50,7 +50,7 @@ public class ComplaintStatus {
           }
    public ComplaintStatus(Long id,String status){
         this.id=id;
-        this.status=status
+        this.status=status;
    }
    public ComplaintStatus(){
 

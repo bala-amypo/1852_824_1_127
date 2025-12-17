@@ -70,9 +70,13 @@ public class Complaint {
          this.user = user; 
          }
     public Complaint(Long id,String title,String description,String category,Integer priorityScore){
-
+        this.id=id;
+        this.title=title;
+        this.description=description;
+        this.category=category;
+        this.priorityScore=priorityScore;
     }
     public complaint(){
-        
+
     }
 }
