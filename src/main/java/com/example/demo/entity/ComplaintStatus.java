@@ -19,13 +19,14 @@ public class ComplaintStatus {
     @JoinColumn(name = "complaint_id")
     private Complaint complaint;
 
-    private String status; // OPEN, IN_PROGRESS, RESOLVED
+    private String status; 
     private LocalDateTime updatedOn;
 
     @PrePersist
     protected void onUpdate() {
-        this.updatedOn = LocalDateTime.now();}
-        
+        this.updatedOn = LocalDateTime.now();
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public Complaint getComplaint() { return complaint; }
