@@ -4,7 +4,7 @@ package com.example.demo.servlet;
 public class SimpleEchoServlet{
  @PostMapping("/ping")
  public Simple v(){
-    retur "PONG"
+    return "PONG"
  }
- 
+
 }
