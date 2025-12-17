@@ -30,10 +30,22 @@ public class ComplaintStatus {
     public Long getId() { 
         return id;
          }
-    public void setId(Long id) { this.id = id; }
-    public Complaint getComplaint() { return complaint; }
-    public void setComplaint(Complaint complaint) { this.complaint = complaint; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public LocalDateTime getUpdatedOn() { return updatedOn; }
+    public void setId(Long id) { 
+        this.id = id; 
+        }
+    public Complaint getComplaint() {
+         return complaint; 
+         }
+    public void setComplaint(Complaint complaint) { 
+        this.complaint = complaint;
+         }
+    public String getStatus() {
+         return status; 
+         }
+    public void setStatus(String status) { 
+        this.status = status; 
+        }
+    public LocalDateTime getUpdatedOn() {
+         return updatedOn;
+          }
 }
