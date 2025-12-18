@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
-import java.time.LocalDateTime;
+
 
 @Entity
 public class Complaint {
@@ -18,11 +18,11 @@ public class Complaint {
     private String title;
     private String description;
     private String category;
-    private LocalDateTime submittedOn;
+    private String submittedOn;
 
-    @ManyToOne
+   
     @JoinColumn(name = "user_id")
-    private User user;
+    private String user;
 
     @PrePersist
     protected void onCreate() {
@@ -68,7 +68,7 @@ public class Complaint {
     public void setUser(User user) {
          this.user = user; 
          }
-    public Complaint(Long id,String title,String description,String category,Long priorityScore,LocalDateTime submittedOn,String user){
+    public Complaint(Long id,String title,String description,String category,Long priorityScore,String submittedOn,String user){
         this.id=id;
         this.title=title;
         this.description=description;
