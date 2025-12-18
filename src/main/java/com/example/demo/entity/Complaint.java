@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 
 
@@ -20,8 +18,6 @@ public class Complaint {
     private String category;
     private String submittedOn;
     private Long priorityScore;
-   
-    @JoinColumn(name = "user_id")
     private String user;
 
     
@@ -56,13 +52,16 @@ public class Complaint {
     public void setPriorityScore(Long priorityScore) { 
         this.priorityScore = priorityScore; 
         }
-    public LocalDateTime getSubmittedOn() { 
+    public String getSubmittedOn() { 
         return submittedOn;
          }
-    public User getUser() {
+    public void setSubmittedOn(String submittedOn){
+        this.submittedOn=submittedOn;
+        }
+    public String getUser() {
          return user;
           }
-    public void setUser(User user) {
+    public void setUser(String user) {
          this.user = user; 
          }
     public Complaint(Long id,String title,String description,String category,Long priorityScore,String submittedOn,String user){
