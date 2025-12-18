@@ -1,70 +1,70 @@
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.PrePersist;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.JoinColumn;
 
-import java.time.LocalDateTime;
 
-@Entity
-public class ComplaintStatus {
+// import java.time.LocalDateTime;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+// @Entity
+// public class ComplaintStatus {
 
-    @ManyToOne
-    @JoinColumn(name = "complaint_id")
-    private Complaint complaint;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    private String status;
 
-    private LocalDateTime updatedOn;
+//     @JoinColumn(name = "complaint_id")
+//     private Complaint complaint;
 
-    @PrePersist
-    protected void onUpdate() {
-        this.updatedOn = LocalDateTime.now();
-    }
+//     private String status;
 
-    public ComplaintStatus() {
-    }
+//     private LocalDateTime updatedOn;
 
-    public ComplaintStatus(Long id, String status, Complaint complaint, LocalDateTime updatedOn) {
-        this.id = id;
-        this.status = status;
-        this.complaint = complaint;
-        this.updatedOn = updatedOn;
-    }
+//     @PrePersist
+//     protected void onUpdate() {
+//         this.updatedOn = LocalDateTime.now();
+//     }
 
-    public Long getId() {
-        return id;
-    }
+//     public ComplaintStatus() {
+//     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//     public ComplaintStatus(Long id, String status, Complaint complaint, LocalDateTime updatedOn) {
+//         this.id = id;
+//         this.status = status;
+//         this.complaint = complaint;
+//         this.updatedOn = updatedOn;
+//     }
 
-    public Complaint getComplaint() {
-        return complaint;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    public void setComplaint(Complaint complaint) {
-        this.complaint = complaint;
-    }
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
 
-    public String getStatus() {
-        return status;
-    }
+//     public Complaint getComplaint() {
+//         return complaint;
+//     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//     public void setComplaint(Complaint complaint) {
+//         this.complaint = complaint;
+//     }
 
-    public LocalDateTime getUpdatedOn() {
-        return updatedOn;
-    }
-}
+//     public String getStatus() {
+//         return status;
+//     }
+
+//     public void setStatus(String status) {
+//         this.status = status;
+//     }
+
+//     public LocalDateTime getUpdatedOn() {
+//         return updatedOn;
+//     }
+// }

@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.PrePersist;
+
 
 
 @Entity
@@ -19,16 +19,13 @@ public class Complaint {
     private String description;
     private String category;
     private String submittedOn;
-
+    private Long priorityScore;
    
     @JoinColumn(name = "user_id")
     private String user;
 
-    @PrePersist
-    protected void onCreate() {
-        this.submittedOn = LocalDateTime.now();
-    }
-
+    
+  
     public Long getId() { 
         return id;
          }
