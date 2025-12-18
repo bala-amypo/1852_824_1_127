@@ -6,8 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.PrePersist;
-import java.time.LocalDateTime;
+
 
 @Entity
 public class ComplaintStatus {
@@ -51,7 +50,8 @@ public class ComplaintStatus {
    public ComplaintStatus(Long id,String status,String complaint,String updatedOn){
         this.id=id;
         this.status=status;
-        this.cate
+        this.category=category;
+        this.updatedOn=updatedOn;
    }
    public ComplaintStatus(){
 
