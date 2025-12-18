@@ -7,15 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 @Entity
 public class User {
-
-    @Id
+  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
     @Column(unique = true, nullable = false)
     private String email;
-
     @Column(nullable = false)
     private String password;
     public User() {

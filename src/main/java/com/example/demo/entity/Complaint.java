@@ -76,7 +76,5 @@ public class Complaint {
         this.category=category;
         this.priorityScore=priorityScore;
     }
-    public complaint(){
-
-    }
+  
 }
