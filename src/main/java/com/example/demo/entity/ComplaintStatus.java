@@ -6,8 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
-import java.time.LocalDateTime;
-
 @Entity
 public class ComplaintStatus {
 
@@ -35,11 +33,11 @@ public class ComplaintStatus {
         this.id = id;
     }
 
-    public Complaint getComplaint() {
+    public String getComplaint() {
         return complaint;
     }
 
-    public void setComplaint(Complaint complaint) {
+    public void setComplaint(String complaint) {
         this.complaint = complaint;
     }
 
@@ -51,7 +49,7 @@ public class ComplaintStatus {
         this.status = status;
     }
 
-    public LocalDateTime getUpdatedOn() {
+    public String getUpdatedOn() {
         return updatedOn;
     }
 }
