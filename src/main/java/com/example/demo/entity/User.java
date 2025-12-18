@@ -16,8 +16,7 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-    public User() {
-    }
+ 
     public Long getId() {
         return id;
     }
@@ -47,6 +46,8 @@ public class User {
         this.name=name;
         this.email=email;
         this.password=password;
+    }
+       public User() {
     }
   
 }
