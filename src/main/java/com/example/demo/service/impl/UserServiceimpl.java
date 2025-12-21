@@ -1,4 +1,5 @@
-
+import org.springframework.stereotype.Service;
+@Services
 public class UserServiceimpl implements UserService{
         
     public interface UserService(){
