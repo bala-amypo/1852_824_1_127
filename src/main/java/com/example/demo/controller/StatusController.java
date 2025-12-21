@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ComplaintStatus;
-import com.example.demo.service.ComplaintStatusService;
+import com.example.demo.service.ComplaintService;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/status")
 public class StatusController {
 
-    private final ComplaintStatusService complaintStatusService;
+    private final ComplaintService complaintStatusService;
 
-    public StatusController(ComplaintStatusService complaintStatusService) {
-        this.complaintStatusService = complaintStatusService;
+    public StatusController(ComplaintStatusService complaintService) {
+        this.complaintStatusService = complaintService;
     }
 
     @GetMapping("/history/{complaintId}")
