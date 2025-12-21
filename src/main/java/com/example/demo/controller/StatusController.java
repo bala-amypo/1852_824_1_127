@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/status")
 public class StatusController {
 
-    private final ComplaintService complaintStatusService;
+    private final ComplaintService complaintService;
 
-    public StatusController(ComplaintStatusService complaintService) {
-        this.complaintStatusService = complaintService;
+    public StatusController(ComplaintService complaintService) {
+        this.complaintService = complaintService;
     }
 
     @GetMapping("/history/{complaintId}")
     public List<ComplaintStatus> getStatusHistory(
             @PathVariable Long complaintId) {
 
-        return complaintStatusService.getStatusHistory(complaintId);
+        return complaintService.getStatusHistory(complaintId);
     }
 }
