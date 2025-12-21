@@ -1,15 +1,27 @@
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-@Services
-public class UserServiceimpl implements UserService{
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public User saveUser(User user) {
+        String hashedPw = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPw);
         
-    public interface UserService(){
-        @Autowired
-        UserRepository obj;
-       public User saveUser(User user){
-         return obj.save(user);
-       }
-       public User findByEmail(String email){
-        return obj.findByEmail(email);
-       }
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+          .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
     }
 }
