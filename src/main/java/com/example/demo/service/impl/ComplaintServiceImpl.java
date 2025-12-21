@@ -18,6 +18,7 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final ComplaintRepository complaintRepository;
     private final PriorityRuleService priorityRuleService;
     private final UserService userService;
+
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             PriorityRuleService priorityRuleService,
@@ -30,15 +31,15 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public Complaint submitComplaint(ComplaintRequest request) {
-        User user = userService.findById(request.userId);
+        User user = userService.findById(request.getUserId());
 
         Complaint complaint = new Complaint();
-        complaint.setTitle(request.title);
-        complaint.setDescription(request.description);
-        complaint.setCategory(request.category);
+        complaint.setTitle(request.getTitle());
+        complaint.setDescription(request.getDescription());
+        complaint.setCategory(request.getCategory());
         complaint.setUser(user);
         complaint.setPriorityScore(
-                priorityRuleService.calculatePriority(request.category)
+                priorityRuleService.calculatePriority(request.getCategory())
         );
 
         return complaintRepository.save(complaint);
