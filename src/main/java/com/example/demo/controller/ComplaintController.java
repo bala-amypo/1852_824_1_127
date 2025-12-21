@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/complaints")
+@RequestMapping("/complaints")
 public class ComplaintController {
 
     private final ComplaintService complaintService;
@@ -34,14 +34,13 @@ public class ComplaintController {
     public List<Complaint> getUserComplaints(@PathVariable Long userId) {
         return complaintService.getUserComplaints(userId);
     }
-
     @GetMapping("/prioritized")
     public List<Complaint> getPrioritizedComplaints() {
         return complaintService.getPrioritizedComplaints();
     }
 
     @PutMapping("/status/{id}")
-    public void updateComplaintStatus(
+    public void updateStatus(
             @PathVariable Long id,
             @RequestParam String status) {
 
