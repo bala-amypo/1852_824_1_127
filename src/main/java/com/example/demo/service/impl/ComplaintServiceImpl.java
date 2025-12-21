@@ -37,24 +37,24 @@ public class ComplaintServiceImpl implements ComplaintService {
         complaint.setTitle(request.getTitle());
         complaint.setDescription(request.getDescription());
         complaint.setCategory(request.getCategory());
-        complaint.setUser(user);
+        complaint.setUser(String.valueOf(user.getId()));
         complaint.setPriorityScore(
-                priorityRuleService.calculatePriority(request.getCategory())
+                Long.valueOf(
+                        priorityRuleService.calculatePriority(
+                                request.getCategory()
+                        )
+                )
         );
-
         return complaintRepository.save(complaint);
     }
-
     @Override
     public List<Complaint> getUserComplaints(Long userId) {
         return complaintRepository.findByUserId(userId);
     }
-
     @Override
     public List<Complaint> getPrioritizedComplaints() {
         return complaintRepository.findAllOrderByPriorityScoreDescCreatedAtAsc();
     }
-
     @Override
     public void updateComplaintStatus(Long id, String status) {
         complaintRepository.findById(id)
