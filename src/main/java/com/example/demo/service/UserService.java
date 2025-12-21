@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-interface veera(){
+interface  UserService(){
 saveUser(String user)
 findByEmail(String email)
 
