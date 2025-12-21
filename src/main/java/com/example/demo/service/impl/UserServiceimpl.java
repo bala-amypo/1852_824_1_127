@@ -1,5 +1,5 @@
 public class UserServiceimpl implements UserService{
-
+        
     public interface UserService(){
         @Autowired
         UserRepository obj;
