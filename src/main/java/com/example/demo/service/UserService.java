@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 public interface  UserService(){
-saveUser(User user)
-findByEmail(String email)
-
+User saveUser(User user);
+User findByEmail(String email);
 }
