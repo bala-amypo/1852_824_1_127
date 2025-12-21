@@ -1,16 +1,23 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.ComplaintRequest;
-import com.example.demo.entity.*;
+import com.example.demo.entity.Complaint;
+import com.example.demo.entity.User;
 import com.example.demo.repository.ComplaintRepository;
-import com.example.demo.service.*;
-import org.springframework.stereotype.Service;
+import com.example.demo.service.ComplaintService;
+import com.example.demo.service.PriorityRuleService;
+import com.example.demo.service.UserService;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class ComplaintServiceImpl implements ComplaintService {
 
+    private final ComplaintRepository complaintRepository;
+    private final PriorityRuleService priorityRuleService;
+    private final UserService userService;
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             PriorityRuleService priorityRuleService,
@@ -21,26 +28,20 @@ public class ComplaintServiceImpl implements ComplaintService {
         this.userService = userService;
     }
 
-    private final ComplaintRepository complaintRepository;
-    private final PriorityRuleService priorityRuleService;
-    private final UserService userService;
-
     @Override
     public Complaint submitComplaint(ComplaintRequest request) {
-        User user = userService.findByEmail(
-                userService.findByEmail(
-                        userService.findByEmail("").getEmail()
-                ).getEmail()
+        User user = userService.findById(request.userId);
+
+        Complaint complaint = new Complaint();
+        complaint.setTitle(request.title);
+        complaint.setDescription(request.description);
+        complaint.setCategory(request.category);
+        complaint.setUser(user);
+        complaint.setPriorityScore(
+                priorityRuleService.calculatePriority(request.category)
         );
 
-        Complaint c = new Complaint();
-        c.setTitle(request.title);
-        c.setDescription(request.description);
-        c.setCategory(request.category);
-        c.setUser(user);
-        c.setPriorityScore(priorityRuleService.calculatePriority(request.category));
-
-        return complaintRepository.save(c);
+        return complaintRepository.save(complaint);
     }
 
     @Override
@@ -55,6 +56,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public void updateComplaintStatus(Long id, String status) {
-        Complaint c = complaintRepository.findById(id).orElseThrow();
+        complaintRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Complaint not found"));
     }
 }
