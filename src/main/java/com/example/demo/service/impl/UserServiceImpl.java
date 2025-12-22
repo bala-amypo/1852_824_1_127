@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
-    public UserServiceImpl(UserRepository userRepository,PasswordEncoder passwordEncoder JwtUtil jwtUtil) {
+    public UserServiceImpl(UserRepository userRepository,PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
