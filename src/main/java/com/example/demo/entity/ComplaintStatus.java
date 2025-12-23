@@ -45,6 +45,9 @@ public class ComplaintStatus {
          }
 
     public Complaint getComplaint() {
-         return complaint; }
-    public void setComplaint(Complaint complaint) { this.complaint = complaint; }
+         return complaint;
+          }
+    public void setComplaint(Complaint complaint) {
+         this.complaint = complaint;
+          }
 }
