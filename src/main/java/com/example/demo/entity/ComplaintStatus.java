@@ -26,14 +26,25 @@ public class ComplaintStatus {
 
     public ComplaintStatus() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+         return id; 
+         }
+    public void setId(Long id) { 
+        this.id = id;
+         }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public String getStatus() {
+         return status; 
+         }
+    public void setStatus(String status) {
+     this.status = status;
+      }
 
-    public LocalDateTime getUpdatedOn() { return updatedOn; }
+    public LocalDateTime getUpdatedOn() {
+         return updatedOn; 
+         }
 
-    public Complaint getComplaint() { return complaint; }
+    public Complaint getComplaint() {
+         return complaint; }
     public void setComplaint(Complaint complaint) { this.complaint = complaint; }
 }

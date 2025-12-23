@@ -29,23 +29,49 @@ public class Complaint {
 
     public Complaint() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() { 
+        return id;
+     }
+    public void setId(Long id) { 
+    this.id = id;
+     }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public String getTitle() {
+     return title;
+      }
+    public void setTitle(String title) { 
+    this.title = title;
+     }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getDescription() { 
+    return description; 
+    }
+    public void setDescription(String description) { 
+        this.description = description; 
+        }
 
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
+    public String getCategory() {
+         return category;
+          }
+    public void setCategory(String category) { 
+    this.category = category;
+     }
 
-    public Integer getPriorityScore() { return priorityScore; }
-    public void setPriorityScore(Integer priorityScore) { this.priorityScore = priorityScore; }
+    public Integer getPriorityScore() {
+         return priorityScore; 
+         }
+    public void setPriorityScore(Integer priorityScore) {
+         this.priorityScore = priorityScore; 
+         }
 
-    public LocalDateTime getSubmittedOn() { return submittedOn; }
+    public LocalDateTime getSubmittedOn() {
+         return submittedOn;
+          }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    public User getUser() {
+         return user;
+          }
+    public void setUser(User user) {
+         this.user = user;
+          }
 }
