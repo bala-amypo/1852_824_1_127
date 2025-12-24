@@ -18,7 +18,7 @@ public class Complaint {
     private LocalDateTime submittedOn;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",null)
+    @JoinColumn(name = "user_id",nullable=true)
     private User user;
 
     @PrePersist
