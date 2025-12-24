@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class Complaint {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,)
     private Long id;
 
     private String title;
@@ -18,7 +18,7 @@ public class Complaint {
     private LocalDateTime submittedOn;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",null)
     private User user;
 
     @PrePersist
