@@ -4,7 +4,6 @@ import com.example.demo.dto.ComplaintRequest;
 import com.example.demo.entity.Complaint;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ComplaintRepository;
-import com.example.demo.repository.PriorityRuleRepository;
 import com.example.demo.service.ComplaintService;
 import com.example.demo.service.PriorityRuleService;
 
@@ -19,15 +18,14 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final ComplaintRepository complaintRepository;
     private final PriorityRuleService priorityRuleService;
 
-    // ⭐ SPRING CONSTRUCTOR (MANUAL WIRING)
+    // ⭐ SPRING CONSTRUCTOR
     @Autowired
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
-            PriorityRuleRepository priorityRuleRepository) {
+            PriorityRuleService priorityRuleService) {
 
         this.complaintRepository = complaintRepository;
-        this.priorityRuleService =
-                new PriorityRuleServiceImpl(priorityRuleRepository);
+        this.priorityRuleService = priorityRuleService;
     }
 
     // ⭐ TEST CONSTRUCTOR (DO NOT REMOVE)
