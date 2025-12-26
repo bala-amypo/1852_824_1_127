@@ -1,5 +1,6 @@
 package com.example.demo.servlet;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,7 +13,7 @@ public class SimpleEchoServlet extends HttpServlet {
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws IOException {
+            throws ServletException, IOException {
 
         String name = request.getParameter("name");
 
