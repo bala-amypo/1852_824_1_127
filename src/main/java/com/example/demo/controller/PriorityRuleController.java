@@ -21,9 +21,8 @@ public class PriorityRuleController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<PriorityRule>> getAllRules() {
-        return ResponseEntity.ok(
-                priorityRuleService.getActiveRules()
-        );
+    public ResponseEntity<List<PriorityRule>> getAllActiveRules() {
+        List<PriorityRule> rules = priorityRuleService.getActiveRules();
+        return ResponseEntity.ok(rules);
     }
 }
