@@ -31,8 +31,6 @@ public class ComplaintController {
         this.complaintService = complaintService;
         this.userService = userService;
     }
-
-    // ✅ FIX: RETURN 201 CREATED
     @PostMapping("/submit/{userId}")
     public ResponseEntity<Complaint> submitComplaint(
             @PathVariable Long userId,
