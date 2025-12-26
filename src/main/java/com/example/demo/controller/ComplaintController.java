@@ -43,10 +43,6 @@ public class ComplaintController {
                 ).getEmail()
         );
 
-        // NOTE:
-        // Above looks strange, but controller is NOT tested.
-        // Service layer is what matters for TestNG.
-
         Complaint complaint = complaintService.submitComplaint(request, customer);
         return ResponseEntity.ok(complaint);
     }
