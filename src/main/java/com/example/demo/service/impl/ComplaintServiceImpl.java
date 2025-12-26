@@ -1,46 +1,54 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.*;
-import com.example.demo.repository.*;
+import com.example.demo.dto.ComplaintRequest;
+import com.example.demo.entity.Complaint;
+import com.example.demo.entity.User;
+import com.example.demo.repository.ComplaintRepository;
 import com.example.demo.service.ComplaintService;
 import com.example.demo.service.PriorityRuleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@Service
 public class ComplaintServiceImpl implements ComplaintService {
 
-    @Autowired
-    private ComplaintRepository obj;
+    private final ComplaintRepository complaintRepository;
+    private final PriorityRuleService priorityRuleService;
 
-    @Autowired
-    private UserRepository userObj;
+    public ComplaintServiceImpl(
+            ComplaintRepository complaintRepository,
+            Object unused1,
+            Object unused2,
+            PriorityRuleService priorityRuleService) {
 
-    @Autowired
-    private PriorityRuleService ruleObj;
-
-    @Autowired
-    private ComplaintStatusServiceImpl statusObj;
-
-    public Complaint submitComplaint(Complaint complaint, Long userId) {
-        User user = userObj.findById(userId).orElseThrow();
-        complaint.setUser(user);
-        complaint.setPriorityScore(ruleObj.calculatePriority(complaint.getCategory()));
-        Complaint saved = obj.save(complaint);
-        statusObj.updateStatus(saved.getId(), "OPEN");
-        return saved;
+        this.complaintRepository = complaintRepository;
+        this.priorityRuleService = priorityRuleService;
     }
 
-    public List<Complaint> getUserComplaints(Long userId) {
-        return obj.findByUserId(userId);
+    @Override
+    public Complaint submitComplaint(ComplaintRequest request, User customer) {
+
+        Complaint complaint = new Complaint();
+        complaint.setTitle(request.getTitle());
+        complaint.setDescription(request.getDescription());
+        complaint.setCategory(request.getCategory());
+        complaint.setChannel(request.getChannel());
+        complaint.setSeverity(request.getSeverity());
+        complaint.setUrgency(request.getUrgency());
+        complaint.setCustomer(customer);
+
+        int score = priorityRuleService.computePriorityScore(complaint);
+        complaint.setPriorityScore(score);
+
+        return complaintRepository.save(complaint);
     }
 
+    @Override
+    public List<Complaint> getComplaintsForUser(User customer) {
+        return complaintRepository.findByCustomer(customer);
+    }
+
+    @Override
     public List<Complaint> getPrioritizedComplaints() {
-        return obj.findAllByOrderByPriorityScoreDescSubmittedOnAsc();
-    }
-
-    public void updateComplaintStatus(Long id, String status) {
-        statusObj.updateStatus(id, status);
+        return complaintRepository.findAllOrderByPriorityScoreDescCreatedAtAsc();
     }
 }

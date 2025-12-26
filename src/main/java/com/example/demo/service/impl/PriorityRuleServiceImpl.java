@@ -1,25 +1,42 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Complaint;
 import com.example.demo.entity.PriorityRule;
 import com.example.demo.repository.PriorityRuleRepository;
 import com.example.demo.service.PriorityRuleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@Service
 public class PriorityRuleServiceImpl implements PriorityRuleService {
 
-    @Autowired
-    private PriorityRuleRepository obj;
+    private final PriorityRuleRepository priorityRuleRepository;
 
-    public int calculatePriority(String category) {
-        return obj.findByCategory(category)
-                .map(PriorityRule::getBaseScore)
-                .orElse(0);
+    public PriorityRuleServiceImpl(PriorityRuleRepository priorityRuleRepository) {
+        this.priorityRuleRepository = priorityRuleRepository;
     }
 
-    public List<PriorityRule> getAllRules() {
-        return obj.findAll();
+    @Override
+    public int computePriorityScore(Complaint complaint) {
+
+        int score = 0;
+
+        if (complaint.getSeverity() == Complaint.Severity.CRITICAL) {
+            score += 50;
+        }
+        if (complaint.getUrgency() == Complaint.Urgency.IMMEDIATE) {
+            score += 40;
+        }
+
+        List<PriorityRule> rules = priorityRuleRepository.findByActiveTrue();
+        for (PriorityRule rule : rules) {
+            score += rule.getWeight();
+        }
+
+        return Math.max(score, 1);
+    }
+
+    @Override
+    public List<PriorityRule> getActiveRules() {
+        return priorityRuleRepository.findByActiveTrue();
     }
 }
