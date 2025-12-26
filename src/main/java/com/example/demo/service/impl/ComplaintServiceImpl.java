@@ -7,15 +7,19 @@ import com.example.demo.repository.ComplaintRepository;
 import com.example.demo.service.ComplaintService;
 import com.example.demo.service.PriorityRuleService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service   
+@Service
 public class ComplaintServiceImpl implements ComplaintService {
 
     private final ComplaintRepository complaintRepository;
     private final PriorityRuleService priorityRuleService;
+
+    // ⭐ THIS CONSTRUCTOR IS USED BY SPRING BOOT
+    @Autowired
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             PriorityRuleService priorityRuleService) {
@@ -24,7 +28,7 @@ public class ComplaintServiceImpl implements ComplaintService {
         this.priorityRuleService = priorityRuleService;
     }
 
-    // ✅ TEST CONSTRUCTOR (used by TestNG)
+    // ⭐ THIS CONSTRUCTOR IS USED BY TESTNG (Mockito)
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             Object unused1,
