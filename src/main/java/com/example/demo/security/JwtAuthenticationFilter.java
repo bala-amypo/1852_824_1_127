@@ -23,8 +23,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain)
             throws ServletException, IOException {
-
-        // Tests do NOT validate filter logic
         filterChain.doFilter(request, response);
     }
 }
