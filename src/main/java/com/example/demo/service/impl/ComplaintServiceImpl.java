@@ -17,8 +17,6 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     private final ComplaintRepository complaintRepository;
     private final PriorityRuleService priorityRuleService;
-
-    // ⭐ THIS CONSTRUCTOR IS USED BY SPRING BOOT
     @Autowired
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
@@ -27,8 +25,6 @@ public class ComplaintServiceImpl implements ComplaintService {
         this.complaintRepository = complaintRepository;
         this.priorityRuleService = priorityRuleService;
     }
-
-    // ⭐ THIS CONSTRUCTOR IS USED BY TESTNG (Mockito)
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             Object unused1,
