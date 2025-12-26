@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service   // ⭐ REQUIRED
+@Service   
 public class PriorityRuleServiceImpl implements PriorityRuleService {
 
     private final PriorityRuleRepository priorityRuleRepository;

@@ -18,7 +18,7 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final ComplaintRepository complaintRepository;
     private final PriorityRuleService priorityRuleService;
 
-    // ⭐ SPRING CONSTRUCTOR
+   
     @Autowired
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
@@ -28,7 +28,6 @@ public class ComplaintServiceImpl implements ComplaintService {
         this.priorityRuleService = priorityRuleService;
     }
 
-    // ⭐ TEST CONSTRUCTOR (DO NOT REMOVE)
     public ComplaintServiceImpl(
             ComplaintRepository complaintRepository,
             Object unused1,
