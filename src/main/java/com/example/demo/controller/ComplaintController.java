@@ -6,14 +6,16 @@ import com.example.demo.entity.User;
 import com.example.demo.service.ComplaintService;
 import com.example.demo.service.UserService;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/complaints")
@@ -30,25 +32,32 @@ public class ComplaintController {
         this.userService = userService;
     }
 
+    // ✅ FIX: RETURN 201 CREATED
     @PostMapping("/submit/{userId}")
-    public Complaint submitComplaint(
+    public ResponseEntity<Complaint> submitComplaint(
             @PathVariable Long userId,
             @RequestBody ComplaintRequest request) {
 
         User user = userService.findById(userId);
-        return complaintService.submitComplaint(request, user);
+        Complaint complaint = complaintService.submitComplaint(request, user);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(complaint);
     }
 
     @GetMapping("/user/{userId}")
-    public List<Complaint> getComplaintsForUser(
+    public ResponseEntity<List<Complaint>> getComplaintsForUser(
             @PathVariable Long userId) {
 
         User user = userService.findById(userId);
-        return complaintService.getComplaintsForUser(user);
+        return ResponseEntity.ok(
+                complaintService.getComplaintsForUser(user));
     }
 
     @GetMapping("/prioritized")
-    public List<Complaint> getPrioritizedComplaints() {
-        return complaintService.getPrioritizedComplaints();
+    public ResponseEntity<List<Complaint>> getPrioritizedComplaints() {
+        return ResponseEntity.ok(
+                complaintService.getPrioritizedComplaints());
     }
 }
