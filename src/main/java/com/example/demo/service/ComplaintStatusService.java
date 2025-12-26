@@ -1,11 +1,9 @@
-package com.example.demo.repository;
+package com.example.demo.service;
 
 import com.example.demo.entity.ComplaintStatus;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ComplaintStatusRepository
-        extends JpaRepository<ComplaintStatus, Long> {
+public interface ComplaintStatusService {
 
-    List<ComplaintStatus> findByComplaintId(Long complaintId);
+    List<ComplaintStatus> getStatusHistory(Long complaintId);
 }
