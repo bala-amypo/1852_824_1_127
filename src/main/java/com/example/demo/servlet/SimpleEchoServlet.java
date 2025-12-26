@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SimpleEchoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(
+    public void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
