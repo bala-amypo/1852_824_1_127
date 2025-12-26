@@ -1,8 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +29,6 @@ public class Complaint {
     private String description;
     private String category;
     private String channel;
-
     private Integer priorityScore;
 
     @Enumerated(EnumType.STRING)
@@ -57,7 +56,6 @@ public class Complaint {
         createdAt = LocalDateTime.now();
     }
 
-    // getters & setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

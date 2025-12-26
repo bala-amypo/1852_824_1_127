@@ -24,7 +24,6 @@ public class PriorityRule {
     @ManyToMany
     private Set<Complaint> complaints = new HashSet<>();
 
-    // getters & setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

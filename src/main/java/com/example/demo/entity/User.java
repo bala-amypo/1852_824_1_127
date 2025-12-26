@@ -13,9 +13,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 
-    public enum Role {
-        CUSTOMER, AGENT, ADMIN
-    }
+    public enum Role { CUSTOMER, AGENT, ADMIN }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +29,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // getters & setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
