@@ -1,11 +1,11 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.User;
+import com.example.demo.entity.PriorityRule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface PriorityRuleRepository extends JpaRepository<PriorityRule, Long> {
 
-    Optional<User> findByEmail(String email);
+    List<PriorityRule> findByActiveTrue();
 }
