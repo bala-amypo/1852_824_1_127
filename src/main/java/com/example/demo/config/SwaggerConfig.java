@@ -30,7 +30,6 @@ public class SwaggerConfig {
                         new Server().url("https://9056.32procr.amypo.ai/")
                 ))
 
-                // Security configuration
                 .components(new Components()
                         .addSecuritySchemes("bearerAuth", bearerAuth)
                 )
